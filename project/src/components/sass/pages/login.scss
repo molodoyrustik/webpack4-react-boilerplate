@@ -1,0 +1,27 @@
+.login__input-wrap {
+  margin-bottom: 5px;
+}
+
+.login__forgot {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-bottom: 15px;
+}
+
+.login__forgot-link {
+  display: block;
+  margin: 0;
+  padding: 0;
+  font-family: 'source_sans_proregular';
+  font-size: 12px;
+  color: #1991eb;
+  text-align: right;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(25, 145, 235, 0.102);
+
+  &:hover {
+    border-bottom: 1px solid #1991eb;
+    color: #1991eb;
+    text-decoration: none;
+  }
+}

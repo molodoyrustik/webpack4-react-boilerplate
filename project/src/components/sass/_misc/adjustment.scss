@@ -1,0 +1,57 @@
+$container-width: 1200px;
+
+// html {
+//   max-width: 1800px;
+//   margin: 0 auto;
+// }
+
+
+
+html, body {
+  width: 100%;
+  min-width: 320px;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.42;
+  @include sourceSansPro(regular);
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrapper {
+  min-height: 100vh;
+  overflow: hidden;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content{
+  flex: 1;
+}
+
+footer{
+  flex: 0;
+  width: 100%;
+}
+
+ul{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6, {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: normal;
+}
+
+* {
+  box-sizing: border-box;
+  word-wrap: break-word;
+}

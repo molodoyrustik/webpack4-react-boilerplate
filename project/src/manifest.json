@@ -1,0 +1,4 @@
+{
+  "index.js": "http://localhost:8050/public/assets/bundle.js",
+  "index.css": "http://localhost:8050/public/assets/styles.css"
+}

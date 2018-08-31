@@ -1,0 +1,12 @@
+.logo {
+  margin-bottom: 50px;
+}
+
+.logo__text {
+  margin: 0;
+  margin-left: 60px;
+  padding: 0;
+  @include sourceSansPro(semi-bold);
+  font-size: 19.27px;
+  color: #ffffff;
+}

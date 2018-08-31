@@ -1,0 +1,22 @@
+.dashboard-content {
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  padding-top: 60px;
+  padding-left: 60px;
+  width: 920px;
+  flex-wrap: wrap;
+}
+
+.dashboard-content__domains, .dashboard-content__channels {
+  width: 420px;
+  margin-bottom: 20px;
+}
+
+.dashboard-content__channels {
+  margin-left: 20px;
+}
+
+.dashboard-content__logs {
+  flex: 1 1 0
+}

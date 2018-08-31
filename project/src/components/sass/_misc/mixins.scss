@@ -1,0 +1,91 @@
+@mixin box-shadow($params){
+  box-shadow: $params;
+  -webkit-box-shadow : $params;
+  -moz-box-shadow: $params;
+}
+
+%clearfix {
+  &:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+
+@mixin inline-block($valign: top) {
+  display: inline-block;
+  vertical-align: $valign;
+}
+
+@mixin sourceSansPro($typeSourceSansPro: regular) {
+  @if $typeSourceSansPro == black {
+    font-family: 'source_sans_problack';
+  } @else if $typeSourceSansPro == black-italic {
+    font-family: 'source_sans_problack_italic';
+  } @else if $typeSourceSansPro == extra-light {
+    font-family: 'source_sans_proextralight';
+  } @else if $typeSourceSansPro == extra-light-it {
+    font-family: 'source_sans_proXLtIt';
+  } @else if $typeSourceSansPro == light {
+    font-family: 'source_sans_prolight';
+  } @else if $typeSourceSansPro == italic {
+    font-family: 'source_sans_proitalic';
+  } @else if $typeSourceSansPro == light-italic {
+    font-family: 'source_sans_prolight_italic';
+  } @else if $typeSourceSansPro == bold-italic {
+    font-family: 'source_sans_probold_italic';
+  } @else if $typeSourceSansPro == bold {
+    font-family: 'source_sans_probold';
+  } @else if $typeSourceSansPro == regular {
+    font-family: 'source_sans_proregular';
+  } @else if $typeSourceSansPro == semi-bold {
+    font-family: 'source_sans_prosemibold';
+  } @else if $typeSourceSansPro == semi-bold-it {
+    font-family: 'source_sans_proSBdIt';
+  }
+}
+
+
+@mixin centered($axis: 'both') {
+  position: absolute;
+
+  @if $axis == 'both' {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  @if $axis == 'x' {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  @if $axis == 'y' {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+@mixin desktop {
+  @media screen and (max-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media screen and (max-width: 992px) {
+    @content;
+  }
+}
+
+@mixin tablets {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin phones {
+  @media screen and (max-width: 480px) {
+    @content;
+  }
+}

@@ -1,0 +1,30 @@
+.btn--blue {
+  display: inline-block;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  padding-left: 40px;
+  padding-right: 30px;
+  color: #ffffff;
+  font-size: 12px;
+  background: #1991eb url(/images/icons/add-icon.png) 20px center no-repeat;
+  border-radius: 3px;
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+    color: #ffffff;
+  }
+}
+
+.btn--grey {
+  display: inline-block;
+  padding: 13px 28px;
+  color: #000000;
+  font-size: 12px;
+  background: #dfe3e9;
+  border-radius: 3px;
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+    color: #000000;
+  }
+}

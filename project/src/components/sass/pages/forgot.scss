@@ -1,0 +1,19 @@
+.forgot {
+  padding-bottom: 120px;
+}
+
+.forgot__submit-btn {
+  margin: 0;
+}
+
+.forgot__links {
+  position: absolute;
+  top: 280px;
+  left: 60px;
+  width: 255px;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

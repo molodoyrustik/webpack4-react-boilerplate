@@ -1,0 +1,186 @@
+.domain-add {
+  width: 955px;
+  padding: 80px;
+  margin-top: 60px;
+  margin-left: 60px;
+  background-color: #fff;
+}
+
+.domain-add__title {
+  margin: 0;
+  margin-bottom: 30px;
+  padding: 0;
+  font-family: 'source_sans_prosemibold';
+  font-size: 32.5px;
+  line-height: 37.5px;
+}
+
+.domain-add__input-group {
+  margin-bottom: 35px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.domain-add__input-title {
+  margin: 0;
+  margin-bottom: 5px;
+  padding: 0;
+  font-family: 'source_sans_prosemibold';
+  font-size: 22.51px;
+  line-height: 37.5px;
+  color: #000;
+}
+
+.domain-add__input-subtitle {
+  margin: 0;
+  margin-bottom: 20px;
+  padding: 0;
+  @include sourceSansPro();
+  font-size: 14px;
+  color: #354052;
+  opacity: 0.5;
+}
+
+.domain-add__input {
+  display: block;
+  width: 398px;
+  padding-top: 12px;
+  padding-left: 40px;
+  padding-right: 30px;
+  padding-bottom: 12px;
+  border-width: 1px;
+  border-color: rgb(223, 227, 233);
+  border-style: solid;
+  border-radius: 3px;
+  background: rgb(247, 249, 250) url('/images/icons/inet-icon.png') 15px center no-repeat;
+  outline: none;
+  @include sourceSansPro();
+  font-size: 14px;
+  color: rgba(#354052, 0.3);
+}
+
+.domain-add__channel-list {
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+}
+
+.domain-add__channel-item {
+  width: 188px;
+  margin: 0;
+  padding: 0;
+  padding-top: 100px;
+  padding-bottom: 30px;
+  color: #354052;
+  font-size: 14px;
+  text-align: center;
+  border: 1px solid #f1f3f6;
+  border-radius: 3px;
+  background-color: #ffffff;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.domain-add__channel-item--email {
+  background-image: url('/images/icons/email-icon.png');
+  background-repeat: no-repeat;
+  background-position: center 50px;
+}
+
+.domain-add__channel-item--telegram {
+  background-image: url('/images/icons/telegram-icon.png');
+  background-repeat: no-repeat;
+  background-position: center 50px;
+}
+
+.domain-add__channel-item--sms {
+  background-image: url('/images/icons/sms-icon.png');
+  background-repeat: no-repeat;
+  background-position: center 50px;
+}
+
+.domain-add__channel-item--active {
+  color: #fff;
+  background-color: #1991eb;
+}
+
+.domain-add__channel-item-email--active {
+  background-image: url('/images/icons/email-icon-hover.png');
+  background-repeat: no-repeat;
+  background-position: center 50px;
+}
+.domain-add__channel-item-telegram--active {
+  background-image: url('/images/icons/telegram-icon-hover.png');
+  background-repeat: no-repeat;
+  background-position: center 50px;
+}
+.domain-add__channel-item-sms--active {
+  background-image: url('/images/icons/sms-icon-hover.png');
+  background-repeat: no-repeat;
+  background-position: center 50px;
+}
+
+.domain-add__proxy-list {
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+}
+
+.domain-add__proxy-item {
+  width: 188px;
+  margin: 0;
+  padding: 0;
+  padding-top: 100px;
+  padding-bottom: 30px;
+  color: #354052;
+  font-size: 14px;
+  text-align: center;
+  border: 1px solid #f1f3f6;
+  border-radius: 3px;
+  cursor: pointer;
+  text-decoration: none;
+  background: #f7f9fa url('/images/icons/country-icon.png') center 35px no-repeat;
+}
+
+.domain-add__proxy-item--active {
+  background-color: #ffffff;
+  border: 1px solid #e5e5e5;
+}
+
+.domain-add__select {
+  width: 390px;
+  padding: 0;
+  padding-left: 15px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-right: 20px;
+  margin: 0;
+  @include sourceSansPro();
+  font-size: 14px;
+  color: #354052;
+  outline: none;
+  background: #f7f9fa;
+  border: 1px solid #eaedf1;
+  border-radius: 3px;
+
+  &:hover {
+
+  }
+}
+
+.domain-add__btns {
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+}
+
+.domain-add__create-btn-pos {
+  margin-left: 15px;
+}
