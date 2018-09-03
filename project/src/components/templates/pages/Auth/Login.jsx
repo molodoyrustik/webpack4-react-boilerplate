@@ -9,7 +9,7 @@ class Login extends Component {
       <LoginLayout>
         <div className="auth">
           <div className="auth__block">
-            <p className="auth__title">Log In!</p>
+            <p className="auth__title">Log In</p>
             <LoginForm />
           </div>
         </div>

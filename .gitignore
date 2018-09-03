@@ -9,3 +9,4 @@ runtime/tmp/*
 !runtime/tmp/index.html
 .lock
 /**/*.lock
+/project/build
