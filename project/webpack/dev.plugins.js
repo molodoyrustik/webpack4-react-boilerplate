@@ -1,5 +1,12 @@
+const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 module.exports = function() {
-    return {
-        devtool: 'cheap-module-eval-source-map'
-    };
+    return [
+      new webpack.NamedModulesPlugin(),
+      new ExtractTextPlugin(
+        {filename: 'styles.css', disable: false, allChunks: true}
+      ),
+      new webpack.HotModuleReplacementPlugin()
+    ]
 };

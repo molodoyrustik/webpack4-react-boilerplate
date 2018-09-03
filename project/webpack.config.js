@@ -1,89 +1,21 @@
 const path = require('path');
 const webpack = require('webpack');
 
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const ManifestPlugin = require('webpack-manifest-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+
+const devserver            = require('./webpack/devserver');
+const sass                 = require('./webpack/sass');
+const extractCSS           = require('./webpack/css.extract');
+const files               = require('./webpack/files');
+const js                   = require('./webpack/js');
+const prodPlugins          = require('./webpack/prod.plugins');
+const devPlugins           = require('./webpack/dev.plugins');
 
 var config = {
   module: {
     rules: [
-      {
-          test: [/\.js$/, /\.jsx$/],
-          loader: 'babel-loader',
-          exclude: /node_modules/
-      },
-      {
-          test: [/\.js$/, /\.jsx$/],
-          exclude: /node_modules/,
-          use: ['babel-loader', 'eslint-loader']
-      },
-      {
-        test: /\.(png|jpg|gif)$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 8192,
-              mimetype: 'image/png',
-              name: 'images/[name].[ext]',
-            }
-          }
-        ],
-      },
-      {
-        test: /\.eot(\?v=\d+.\d+.\d+)?$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: 'fonts/[name].[ext]'
-            }
-          }
-        ],
-      },
-      {
-        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 8192,
-              mimetype: 'application/font-woff',
-              name: 'fonts/[name].[ext]',
-            }
-          }
-        ],
-      },
-      {
-        test: /\.[ot]tf(\?v=\d+.\d+.\d+)?$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 8192,
-              mimetype: 'application/octet-stream',
-              name: 'fonts/[name].[ext]',
-            }
-          }
-        ],
-      },
-      {
-        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 8192,
-              mimetype: 'image/svg+xml',
-              name: 'images/[name].[ext]',
-            }
-          }
-        ],
-      }
+      ...files(),
+      ...js(),
     ]
   },
   resolve: {
@@ -105,55 +37,10 @@ module.exports = (env, argv) => {
       filename: 'bundle.js'
     }
     config.devtool = 'source-map';
-    config.devServer = {
-    	contentBase: 'public',
-    	port:3000,
-      hot: true,
-    	historyApiFallback: true,
-      proxy: {
-      '/api': 'http://localhost:3002'
-      },
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-        "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
-      }
-    }
-    config.plugins = [
-      new webpack.NamedModulesPlugin(),
-      new ExtractTextPlugin(
-        {filename: 'styles.css', disable: false, allChunks: true}
-      ),
-      new webpack.HotModuleReplacementPlugin()
-    ]
+    config.devServer = devserver();
+    config.plugins = devPlugins();
     config.module.rules = config.module.rules.concat([
-      {
-        test: /\.scss$/,
-        use: ['css-hot-loader'].concat(ExtractTextPlugin.extract(
-          {
-            fallback: 'style-loader',
-            use: [
-             {
-               loader: 'css-loader',
-               options: {
-               url: false,
-                 minimize: true,
-                 sourceMap: true
-               },
-             },
-             {
-               loader: 'sass-loader',
-               options: {
-                 url: false,
-                 minimize: true,
-                 sourceMap: true
-                }
-              }
-            ]
-           }
-         )
-       )
-      }
+      ...sass()
     ])
   }
 
@@ -167,28 +54,7 @@ module.exports = (env, argv) => {
       filename: 'js/bundle.[hash].js'
     }
     config.plugins = [
-      new webpack.DefinePlugin({ 'process.env': { NODE_ENV: JSON.stringify('production') } }),
-      new CleanWebpackPlugin('build', {}),
-      new CopyWebpackPlugin([
-        { from: './public/', to: './', force: true }
-      ], {}),
-      new webpack.optimize.ModuleConcatenationPlugin(),
-      new ManifestPlugin(),
-      new ExtractTextPlugin({
-        filename: 'css/styles.[hash].css', disable: false, allChunks: true
-      }),
-      new HtmlWebpackPlugin({
-        body: true,
-        inject: false,
-        hash: true,
-        template: './utils/index_prod.html',
-        filename: 'index.html'
-      }),
-      new webpack.optimize.OccurrenceOrderPlugin(),
-      new webpack.LoaderOptionsPlugin({
-        minimize: true,
-        debug: false,
-      })
+      ...prodPlugins(),
     ]
     config.optimization = {
       minimizer: [
@@ -200,18 +66,7 @@ module.exports = (env, argv) => {
       ]
     }
     config.module.rules = config.module.rules.concat([
-      {
-        test: /\.scss$/,
-        exclude: /node_modules/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            'css-loader',
-            { loader: 'sass-loader', query: { sourceMap: false } },
-          ],
-          publicPath: '../'
-        }),
-      }
+      ...extractCSS()
     ])
   }
   return config;

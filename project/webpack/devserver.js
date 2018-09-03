@@ -2,14 +2,14 @@ const path = require('path');
 const contentBase = path.join(__dirname, "../public");
 
 module.exports = function() {
-  return {
-    devServer: {
-    	inline: true,
-    	contentBase: contentBase,
-    	compress: true,
-    	port:8050,
-    	watchContentBase: true,
-    	historyApiFallback: true,
+  return (
+    {
+      inline: true,
+      contentBase: 'public',
+      compress: true,
+      hot: true,
+      port:3000,
+      historyApiFallback: true,
       proxy: {
       '/api': 'http://localhost:3002'
       },
@@ -19,5 +19,5 @@ module.exports = function() {
         "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
       }
     }
-  };
+  )
 };
