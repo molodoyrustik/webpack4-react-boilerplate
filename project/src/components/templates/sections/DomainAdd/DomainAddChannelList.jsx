@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import shortid from 'shortid';
 
 import DomainAddChannelItem from './DomainAddChannelItem';
 import CreateNewBtn from '../../common/CreateNewBtn';
@@ -22,6 +23,7 @@ class DomainAddChannelList extends Component {
         {
           channels.map((channel) => {
             return <DomainAddChannelItem
+                    key={shortid.generate()}
                     isActive={this.state.activeItem === channel.id}
                     onChannelChange={this.handleChange(channel)}
                     type={channel.type} channelId={channel.id}

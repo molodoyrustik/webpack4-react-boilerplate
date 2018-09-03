@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import shortid from 'shortid';
 
 import DomainAddProxyItem from './DomainAddProxyItem';
 import CreateNewBtn from '../../common/CreateNewBtn';
@@ -38,6 +39,7 @@ class DomainAddProxyList extends Component {
         {
           proxies.map((proxy) => {
             return <DomainAddProxyItem
+                      key={shortid.generate()}
                       isActive={this.state.activeItem === proxy.id}
                       onProxyChange={this.handleClick(proxy)}
                       country={proxy.country}

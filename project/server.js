@@ -1,6 +1,6 @@
-var express = require('express');
-var fallback = require('express-history-api-fallback');
-var app = express();
+const express = require('express');
+const fallback = require('express-history-api-fallback');
+const app = express();
 
 const root = `./build`;
 app.use(express.static(root))
@@ -11,7 +11,7 @@ app.get('/', function(req,res) {
 	return res.send('hello');
 })
 
-var port = 3000;
+const port = 3000;
 
 app.listen(port, function(){
 	console.log(`Listen on port: ${port}...`);

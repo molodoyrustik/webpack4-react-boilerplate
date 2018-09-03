@@ -6,7 +6,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const ManifestPlugin = require('webpack-manifest-plugin');
-
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 var config = {
@@ -96,7 +95,7 @@ module.exports = (env, argv) => {
   if (argv.mode === 'development') {
     config.entry= [
       'react-hot-loader/patch',
-      'webpack-dev-server/client?http://localhost:8080',
+      'webpack-dev-server/client?http://localhost:3000',
       'webpack/hot/only-dev-server',
       './src/index.js',
       './src/components/sass/main.scss'
@@ -108,7 +107,7 @@ module.exports = (env, argv) => {
     config.devtool = 'source-map';
     config.devServer = {
     	contentBase: 'public',
-    	port:8080,
+    	port:3000,
       hot: true,
     	historyApiFallback: true,
       proxy: {
@@ -165,7 +164,7 @@ module.exports = (env, argv) => {
     ]
     config.output = {
       path: path.resolve(__dirname, 'build'),
-      filename: 'bundle.[hash].js'
+      filename: 'js/bundle.[hash].js'
     }
     config.plugins = [
       new webpack.DefinePlugin({ 'process.env': { NODE_ENV: JSON.stringify('production') } }),
@@ -176,7 +175,7 @@ module.exports = (env, argv) => {
       new webpack.optimize.ModuleConcatenationPlugin(),
       new ManifestPlugin(),
       new ExtractTextPlugin({
-        filename: 'styles.[hash].css', disable: false, allChunks: true
+        filename: 'css/styles.[hash].css', disable: false, allChunks: true
       }),
       new HtmlWebpackPlugin({
         body: true,

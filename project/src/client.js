@@ -17,7 +17,9 @@ import { testToken } from './actions';
 const store = configureStore(window.REDUX_INITIAL_STATE, 'browser', routerMiddleware(history));
 
 const token = Cookies.get('token');
-store.dispatch(testToken(token));
+store.dispatch(testToken(token)).then(() => {
+  console.log('test token end');
+});
 
 class Client extends Component {
   render() {
